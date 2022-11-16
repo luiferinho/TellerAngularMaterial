@@ -39,6 +39,7 @@ export class DialogPropietariosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getUser();
   }
 
   saveUser(): void{
@@ -74,8 +75,9 @@ export class DialogPropietariosComponent implements OnInit {
    showBoton(boton : string):void{
     this.Boton= boton;
    }
+
    getUser(): void{
-    this.servicioBackend.getData('propietarios').subscribe(
+    this.servicioBackend.getData('mecanicos').subscribe(
       (data) =>{
         this.dataSource=data;
         console.log(data[2].Nombre)

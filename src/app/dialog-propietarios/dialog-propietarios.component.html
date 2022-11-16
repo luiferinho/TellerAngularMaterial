@@ -75,8 +75,8 @@
       <mat-form-field appearance="fill">
         <mat-label>Select</mat-label>
         <mat-select>
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
+          <mat-option *ngFor="let user of dataSource" [value]="user.Nombre">{{user.Nombre}}</mat-option>
+          
         </mat-select>
       </mat-form-field>
      
