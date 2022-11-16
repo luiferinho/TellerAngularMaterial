@@ -21,6 +21,7 @@ export class DialogPropietariosComponent implements OnInit {
                 private servicioBackend :RequestBackendService,
                 @Inject(MAT_DIALOG_DATA) public data: any) { 
     this.formUser = this.fb.group({
+      id : [''],
       Nombre : [''],
       Apellidos : [''],
       FechaNacimiento : [''],
@@ -31,16 +32,32 @@ export class DialogPropietariosComponent implements OnInit {
       //Clave : ['']     
     });
 
-    if(data && data.user){
+    /* if(data && data.user){
       this.formUser.patchValue(data.user)
       console.log(data);
       this.Boton= data.Boton;
-    }
+    } */
   }
 
   ngOnInit(): void {
     this.getUser();
   }
+
+  ngAfterViewInit(): void{
+    if(this.data && this.data.user){
+      const user = JSON.parse(JSON.stringify(this.data.user));
+      user['FechaNacimiento']= user['FechaNacimiento'].split('T')[0];
+      this.formUser.patchValue(user);
+      console.log(user);
+      this.Boton= this.data.Boton;
+
+
+    }
+
+  }
+
+
+
 
   saveUser(): void{
     const datosUser = this.formUser.getRawValue();
@@ -52,7 +69,7 @@ export class DialogPropietariosComponent implements OnInit {
         Swal.fire(
           'Usuario Creado ',
           'Todo Ready',
-          'question'
+          'success'
 );
       },
       error:(error)=>{
@@ -91,7 +108,8 @@ export class DialogPropietariosComponent implements OnInit {
    }
 
    updatePropietario():void{ 
-      
+      const newData = this.formUser.getRawValue();
+      this.servicioBackend.updateData('propietarios',newData, newData.id)
   }
 
 }
