@@ -1,0 +1,20 @@
+.cls-botonera{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    position : relative;
+    top: -8 px;
+    
+    
+}
+.cls-bonera-child{
+        
+    position: relative;
+    top: -8px;
+    //align-items: center;
+    display: flex;
+    gap: 10px;
+    
+    
+    }

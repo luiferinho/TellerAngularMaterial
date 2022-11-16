@@ -1,0 +1,20 @@
+.cls-form{
+    //display: inline-flex;
+    gap: 20px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    .cls-field{
+        gap: 10px;
+        display: flex;
+    }
+    h1{
+        text-align: center;
+        color: cadetblue;
+    }
+    button{
+        background-color: cadetblue;
+        color:azure;
+        align-items : right;
+    }
+}

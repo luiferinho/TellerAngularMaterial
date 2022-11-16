@@ -1,0 +1,92 @@
+ <div class="cls-form" [formGroup]="formUser" >
+    <div>
+        <h1>{{Boton == 'guardar' ?  'Nuevo Propietario':'Editar Propietario'}}</h1>
+         <hr> <br> <br>
+    </div>
+    <div class="cls-field">
+      <!-- <label for="Nombre">Nombre</label>
+      <input type="text" name="Nombre" id="Nombre" formControlName="Nombre"> -->
+      <mat-form-field class="cls-field" appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="Nombre">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Apellidos</mat-label>
+        <input matInput formControlName="Apellidos">
+      </mat-form-field>
+    </div>
+   <!--  <div>
+      <label for="Apellidos" >Apellidos</label>
+      <input type="text" name="Apellidos" id="Apellidos" formControlName="Apellidos">
+      <mat-form-field appearance="outline">
+        <mat-label>Apellidos</mat-label>
+        <input matInput formControlName="Apellidos">
+      </mat-form-field>
+    </div> -->
+    <div class="cls-field">
+      <!-- <label for="Telefono">Numero de Telefono</label>
+      <input type="number" name="Telefono" id="Telefono" formControlName="NumeroTelefono"> -->
+      <mat-form-field appearance="outline">
+        <mat-label>Telefono</mat-label>
+        <input type="number" matInput formControlName="NumeroTelefono">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input  type="date" matInput formControlName="FechaNacimiento">
+      </mat-form-field>
+    </div>
+    <!-- <div class="cls-field">
+      <label for="Fecha">Fecha de Nacimienot</label>
+      <input type="date" name="Fecha" id="Fecha" formControlName="FechaNacimiento"> 
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input  type="date" matInput formControlName="FechaNacimiento">
+      </mat-form-field>
+    </div> -->
+    <div class="cls-field">
+      <!-- <label for="Ciudad">Ciudad de Residencia</label>
+      <input type="text" name="Fecha" id="FeCiudadcha" formControlName="CiudadResidencia"> -->
+      <mat-form-field appearance="outline">
+        <mat-label>Ciudad de Residencia</mat-label>
+        <input  matInput formControlName="CiudadResidencia">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Correo</mat-label>
+        <input  matInput formControlName="Correo">
+      </mat-form-field>
+    </div>
+    <!-- <div>
+      <label for="Correo">Correo</label>
+      <input type="email" name="Correo" id="" formControlName="Correo"> 
+      <mat-form-field appearance="outline">
+        <mat-label>Correo</mat-label>
+        <input  matInput formControlName="Correo">
+      </mat-form-field>
+    </div>-->
+    <div>
+      <!-- <label for="Clave">Contraseña</label>
+      <input type="password" name="Clave" id="Clave" formControlName="Clave"> -->
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>Clave</mat-label>
+        <input  matInput formControlName="Clave">
+      </mat-form-field> -->
+      <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select>
+          <mat-option value="one">First option</mat-option>
+          <mat-option value="two">Second option</mat-option>
+        </mat-select>
+      </mat-form-field>
+     
+
+    </div> 
+    <div class="cls-button">
+      <button mat-raised-button (click)="saveUser()" *ngIf="Boton=='guardar'" >Guardar</button>
+     
+    </div>
+    <div>
+      <button mat-raised-button (click)="updatePropietario()" *ngIf="Boton=='editar'">Editar</button>
+    </div>
+  </div> 
