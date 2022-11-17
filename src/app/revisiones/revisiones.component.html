@@ -1,0 +1,95 @@
+
+<div class="cls-contentpage">
+
+    <h2>{{titulo}}</h2>    
+
+    <br>
+    <!-- <editor [nombre]="nombreUsuarioSeleccionado"
+            (salidaCambionombre)="cambioNombreUsuario($event)" *ngIf="showform"></editor> -->
+  
+    <div class="cls-bonera-child">
+        <mat-form-field appearance="outline">
+            <mat-label>Cedula</mat-label>
+            <input matInput [(ngModel)]="value">
+          </mat-form-field>
+        <!-- <input type="text" placeholder=""  [(ngModel)]="value"> -->
+       
+        <button  (click)="filtrar()" mat-raised-button color="primary">Filtrar</button>
+    </div>
+    <div>
+    <button mat-button color="primary" (click)="changeShowForm();showBoton('guardar');openDialogAdd()">Agregar</button>
+    </div><br>
+   <!--  <button (click)="changeShowForm();showBoton('guardar');openDialogAdd()">Agregar</button>  -->       
+  
+    
+      <div>
+  
+  
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+          <!-- Position Column -->
+          <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef> Fecha </th>
+            <td mat-cell *matCellDef="let element">  {{setFormat(element.fecha)}} </td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="vehiId">
+            <th mat-header-cell *matHeaderCellDef> Vehiculo </th>
+            <td mat-cell *matCellDef="let element" > {{element.vehiId}} </td>
+          </ng-container>
+        
+          <!-- Weight Column --> 
+          <ng-container matColumnDef="nivelaceite">
+            <th mat-header-cell *matHeaderCellDef> Aceite</th>
+            <td mat-cell *matCellDef="let element"> {{element.nivelaceite}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="mecanicoId">
+            <th mat-header-cell *matHeaderCellDef> Mecaniclo </th>
+            <td mat-cell *matCellDef="let element"> {{element.mecanicoId}} </td>
+          </ng-container>
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="nivelRefrigerante">
+            <th mat-header-cell *matHeaderCellDef> Refrigerante </th>
+            <td mat-cell *matCellDef="let element"> {{element.nivelRefrigerante}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nivelliquidof">
+            <th mat-header-cell *matHeaderCellDef> Liquido Frenos </th>
+            <td mat-cell *matCellDef="let element"> {{element.nivelliquidof}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="NivelLquidoDireccion">
+            <th mat-header-cell *matHeaderCellDef> Liquido Direccion </th>
+            <td mat-cell *matCellDef="let element"> {{element.NivelLquidoDireccion}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="Acciones">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let element"> 
+              <div style="display:flex; gap: 10px">
+             <!--  <a (click)="selectUser(element); showBoton('editar'); openDialogEdit(element)">Editar</a> -->
+              <button mat-button color="primary" (click)="selectUser(element); showBoton('editar'); openDialogEdit(element)">Editar</button>
+
+              
+              </div>
+            </td> 
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    
+      </div>
+    </div>
+    <br>
+      
+
+    
+    
+    

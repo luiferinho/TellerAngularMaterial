@@ -123,9 +123,7 @@ export class UsuariosComponent implements OnInit {
 
    showBoton(boton : string):void{
     this.Boton= boton;
-   }
-   
-
+   }  
    
 
    changeShowForm(): void{
@@ -207,6 +205,11 @@ openDialogEdit(user?: string) {
       Boton :'editar' 
     }
   });
+  dialogRef.afterClosed().subscribe((data=>{
+    if(data){
+      this.getUser();
+    }
+  }));
 }
 
 setFormat(dateString:string):string{

@@ -22,6 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogPropietariosComponent } from './dialog-propietarios/dialog-propietarios.component';
 import {MatSelectModule} from '@angular/material/select';
+import { DialogRevisionesComponent } from './dialog-revisiones/dialog-revisiones.component';
+import { RevisionesComponent } from './revisiones/revisiones.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import {MatSelectModule} from '@angular/material/select';
     ToolbarComponent,
     ContentComponent,
     EditorComponent,
-    DialogPropietariosComponent
+    DialogPropietariosComponent,
+    DialogRevisionesComponent,
+    RevisionesComponent
   ],
   imports: [
     BrowserModule,

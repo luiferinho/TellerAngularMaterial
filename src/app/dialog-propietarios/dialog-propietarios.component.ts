@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { RequestBackendService } from '../request-backend.service';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 
 @Component({
@@ -19,7 +19,8 @@ export class DialogPropietariosComponent implements OnInit {
 
   constructor( private fb : FormBuilder,
                 private servicioBackend :RequestBackendService,
-                @Inject(MAT_DIALOG_DATA) public data: any) { 
+                @Inject(MAT_DIALOG_DATA) public data: any,
+                public dialogRef: MatDialogRef<DialogPropietariosComponent>) { 
     this.formUser = this.fb.group({
       id : [''],
       Nombre : [''],
@@ -50,7 +51,6 @@ export class DialogPropietariosComponent implements OnInit {
       this.formUser.patchValue(user);
       console.log(user);
       this.Boton= this.data.Boton;
-
 
     }
 
@@ -97,7 +97,7 @@ export class DialogPropietariosComponent implements OnInit {
     this.servicioBackend.getData('mecanicos').subscribe(
       (data) =>{
         this.dataSource=data;
-        console.log(data[2].Nombre)
+        //console.log(data[2].Nombre)
       },
       (error) =>{
         console.log(error);
@@ -109,7 +109,34 @@ export class DialogPropietariosComponent implements OnInit {
 
    updatePropietario():void{ 
       const newData = this.formUser.getRawValue();
-      this.servicioBackend.updateData('propietarios',newData, newData.id)
+      this.servicioBackend.updateData('propietarios',JSON.stringify(newData),newData.id).subscribe({
+        next: (data) =>{
+          console.log(data);
+          this.getUser();
+           
+          Swal.fire(
+            'Usuario Editado ',
+            'Todo Ready',
+            'success'
+  );this.dialogRef.close(true);
+        },
+        error:(error)=>{
+          console.log(error);
+          Swal.fire(
+            'Usuario No Editado',
+            'Error En el proceso',
+            'question'
+  );
+        },
+        complete:()=>{
+          console.log('complete');
+        }
+      });     
+  
+      console.log(newData);
+      
+  
+     }
   }
 
-}
+
