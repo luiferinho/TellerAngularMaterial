@@ -1,0 +1,36 @@
+.cls-contentpage{
+    padding: 10px 35px;
+    table{
+        width: 100%;
+    }
+}
+
+.cls-mayor{
+    background: rgb(70, 70, 252);
+}
+
+.cls-menor{
+    background: rgb(255, 110, 110);
+}
+
+.cls-botonera{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    position : relative;
+    top: -8 px;
+    
+    
+}
+
+.cls-bonera-child{
+        
+    position: relative;
+    top: -8px;
+    //align-items: center;
+    display: flex;
+    gap: 10px;
+    
+    
+    }

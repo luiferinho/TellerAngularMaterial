@@ -24,6 +24,8 @@ import { DialogPropietariosComponent } from './dialog-propietarios/dialog-propie
 import {MatSelectModule} from '@angular/material/select';
 import { DialogRevisionesComponent } from './dialog-revisiones/dialog-revisiones.component';
 import { RevisionesComponent } from './revisiones/revisiones.component';
+import { MecanicosComponent } from './mecanicos/mecanicos.component';
+import { DialogMecanicosComponent } from './dialog-mecanicos/dialog-mecanicos.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { RevisionesComponent } from './revisiones/revisiones.component';
     EditorComponent,
     DialogPropietariosComponent,
     DialogRevisionesComponent,
-    RevisionesComponent
+    RevisionesComponent,
+    MecanicosComponent,
+    DialogMecanicosComponent
   ],
   imports: [
     BrowserModule,
