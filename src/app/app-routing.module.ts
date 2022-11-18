@@ -6,6 +6,9 @@ import { CrudVehiculoComponent } from './administracion/crud-vehiculo/crud-vehic
 import { RevisionesComponent } from './revisiones/revisiones.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { MecanicosComponent } from './mecanicos/mecanicos.component';
+import { VehiculoComponent } from './vehiculo/vehiculo.component';
+
+
 
 
 
@@ -13,7 +16,7 @@ import { MecanicosComponent } from './mecanicos/mecanicos.component';
 const routes: Routes = [
   {path:'propietario', component : CrudPropietarioComponent},
   {path:'mecanicos', component : MecanicosComponent},
-  {path:'vehiculo', component : CrudVehiculoComponent},
+  {path:'vehiculos', component : VehiculoComponent},
   {path:'usuarios', component : UsuariosComponent},
   {path:'revisiones', component : RevisionesComponent}
   

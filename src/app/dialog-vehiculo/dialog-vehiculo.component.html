@@ -1,0 +1,80 @@
+<div class="cls-form" [formGroup]="formUser" >
+    <div>
+        <h1>{{Boton == 'guardar' ?  'Nuevo Propietario':'Editar Propietario'}}</h1>
+         <hr> <br> <br>
+    </div>
+    <div class="cls-field">
+      <!-- <label for="Nombre">Nombre</label>
+      <input type="text" name="Nombre" id="Nombre" formControlName="Nombre"> -->
+      
+      <mat-form-field class="cls-field" appearance="outline">
+        <mat-label>Placa</mat-label>
+        <input matInput formControlName="Placa">
+      </mat-form-field>
+      
+      
+      <mat-form-field class="cls-field" appearance="outline">
+        <mat-label>Marca</mat-label>
+        <input matInput formControlName="Marca">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Modelo</mat-label>
+        <input type="number" matInput formControlName="Modelo">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo</mat-label>
+        <input matInput formControlName="Tipo">
+      </mat-form-field>
+    </div>
+
+    <div class="cls-field">
+      <!-- <label for="Telefono">Numero de Telefono</label>
+      <input type="number" name="Telefono" id="Telefono" formControlName="NumeroTelefono"> -->
+      <mat-form-field appearance="outline">
+        <mat-label>Numero de Pasajeros</mat-label>
+        <input type="number" matInput formControlName="Pasajeros">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Cilindraje</mat-label>
+        <input  type="number" matInput formControlName="Cilindraje">
+      </mat-form-field>
+    </div>
+
+    <div class="cls-field">
+      <!-- <label for="Ciudad">Ciudad de Residencia</label>
+      <input type="text" name="Fecha" id="FeCiudadcha" formControlName="CiudadResidencia"> -->
+   
+
+      <mat-form-field appearance="outline">
+        <mat-label>Pais de origen</mat-label>
+        <input  matInput formControlName="PaisOrigen">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Caracteristicas</mat-label>
+        <input  matInput formControlName="Caracteristicas">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Numero de la solicitud</mat-label>
+        <input  matInput formControlName="solicitudRevisionId">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Cedula del propietario</mat-label>
+        <input  matInput formControlName="propietarioId">
+      </mat-form-field>
+    
+    </div>
+ 
+    <div>
+  
+     
+
+    </div> 
+    <div class="cls-button">
+      <button mat-raised-button (click)="saveUser()" *ngIf="Boton=='guardar'" >Guardar</button>
+     
+    </div>
+    <div>
+      <button mat-raised-button (click)="updatePropietario()" *ngIf="Boton=='editar'">Editar</button>
+    </div>
+  </div> 

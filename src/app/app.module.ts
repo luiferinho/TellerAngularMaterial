@@ -26,6 +26,8 @@ import { DialogRevisionesComponent } from './dialog-revisiones/dialog-revisiones
 import { RevisionesComponent } from './revisiones/revisiones.component';
 import { MecanicosComponent } from './mecanicos/mecanicos.component';
 import { DialogMecanicosComponent } from './dialog-mecanicos/dialog-mecanicos.component';
+import { VehiculoComponent } from './vehiculo/vehiculo.component';
+import { DialogVehiculoComponent } from './dialog-vehiculo/dialog-vehiculo.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { DialogMecanicosComponent } from './dialog-mecanicos/dialog-mecanicos.co
     DialogRevisionesComponent,
     RevisionesComponent,
     MecanicosComponent,
-    DialogMecanicosComponent
+    DialogMecanicosComponent,
+    VehiculoComponent,
+    DialogVehiculoComponent
   ],
   imports: [
     BrowserModule,
