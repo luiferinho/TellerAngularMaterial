@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { RequestBackendService } from '../request-backend.service';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import {FormControl} from '@angular/forms';
+import { DialogPropietariosComponent } from '../dialog-propietarios/dialog-propietarios.component';
 
 @Component({
   selector: 'app-dialog-mecanicos',
@@ -21,7 +22,8 @@ export class DialogMecanicosComponent implements OnInit {
     dataSource : any = [];
     constructor(private fb : FormBuilder,
       private servicioBackend :RequestBackendService,
-      @Inject(MAT_DIALOG_DATA) public data: any) { 
+      @Inject(MAT_DIALOG_DATA) public data: any,
+      public dialogRef: MatDialogRef<DialogPropietariosComponent>) { 
         this.formUser = this.fb.group({
           id : [''],
           Nombre : [''],
@@ -67,7 +69,7 @@ export class DialogMecanicosComponent implements OnInit {
             'Usuario Creado ',
             'Todo Ready',
             'success'
-  );
+  );this.dialogRef.close(true);
         },
         error:(error)=>{
           console.log(error);
@@ -80,19 +82,21 @@ export class DialogMecanicosComponent implements OnInit {
         complete:()=>{
           console.log('complete');
         }
-      });
+      });     
   
       console.log(datosUser);
-  
+      
      }
+
      showBoton(boton : string):void{
       this.Boton= boton;
      }
+
      getUser(): void{
       this.servicioBackend.getData('mecanicos').subscribe(
         (data) =>{
           this.dataSource=data;
-          console.log(data[2].Nombre)
+          console.log(data)
         },
         (error) =>{
           console.log(error);
@@ -101,10 +105,36 @@ export class DialogMecanicosComponent implements OnInit {
         }
       )
      }
-     updatePropietario():void{ 
+     updateMecanico():void{ 
       const newData = this.formUser.getRawValue();
-      this.servicioBackend.updateData('mecanicos',newData, newData.id)
-  }
+      this.servicioBackend.updateData('mecanicos',JSON.stringify(newData),newData.id).subscribe({
+        next: (data) =>{
+          console.log(data);
+          this.getUser();
+           
+          Swal.fire(
+            'Usuario Editado ',
+            'Todo Ready',
+            'success'
+  );this.dialogRef.close(true);
+        },
+        error:(error)=>{
+          console.log(error);
+          Swal.fire(
+            'Usuario No Editado',
+            'Error En el proceso',
+            'question'
+  );
+        },
+        complete:()=>{
+          console.log('complete');
+        }
+      });     
+  
+      console.log(newData);
+      
+  
+     }
   
   
     

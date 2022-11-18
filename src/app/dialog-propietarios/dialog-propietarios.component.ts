@@ -22,11 +22,11 @@ export class DialogPropietariosComponent implements OnInit {
                 @Inject(MAT_DIALOG_DATA) public data: any,
                 public dialogRef: MatDialogRef<DialogPropietariosComponent>) { 
     this.formUser = this.fb.group({
-      id : [''],
+      Cedula : [''],
       Nombre : [''],
       Apellidos : [''],
-      FechaNacimiento : [''],
       NumeroTelefono : [''],
+      FechaNacimiento : [''],      
       CiudadResidencia : [''],
       Correo : [''],
       //Acciones : [''],
@@ -70,7 +70,7 @@ export class DialogPropietariosComponent implements OnInit {
           'Usuario Creado ',
           'Todo Ready',
           'success'
-);
+);this.dialogRef.close(true);
       },
       error:(error)=>{
         console.log(error);
@@ -83,10 +83,10 @@ export class DialogPropietariosComponent implements OnInit {
       complete:()=>{
         console.log('complete');
       }
-    });
+    });     
 
     console.log(datosUser);
-
+    
    }
 
    showBoton(boton : string):void{
@@ -109,7 +109,7 @@ export class DialogPropietariosComponent implements OnInit {
 
    updatePropietario():void{ 
       const newData = this.formUser.getRawValue();
-      this.servicioBackend.updateData('propietarios',JSON.stringify(newData),newData.id).subscribe({
+      this.servicioBackend.updateData('propietarios',JSON.stringify(newData),newData.Cedula).subscribe({
         next: (data) =>{
           console.log(data);
           this.getUser();

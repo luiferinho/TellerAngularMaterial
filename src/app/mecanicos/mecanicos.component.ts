@@ -190,7 +190,11 @@ export class MecanicosComponent implements OnInit {
         user: null,
         Boton :'editar'
       }
-    });
+    });dialogRef.afterClosed().subscribe((data=>{
+      if(data){
+        this.getUser();
+      }
+    }));
   }
   
   openDialogEdit(user?: string) {
@@ -201,7 +205,11 @@ export class MecanicosComponent implements OnInit {
         user: user,
         Boton :'editar' 
       }
-    });
+    });dialogRef.afterClosed().subscribe((data=>{
+      if(data){
+        this.getUser();
+      }
+    }));
   }
   
   setFormat(dateString:string):string{

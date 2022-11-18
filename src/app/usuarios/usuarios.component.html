@@ -3,97 +3,17 @@
 <div class="cls-contentpage">
 
   <h2>{{titulo}}</h2>
-  
-
- <!--  <div>
-    <button>Validar</button>
-  </div>
-
-  <div>
-    <span *ngIf="edad >=18" 
-      [ngStyle]="{}">
-      Es Mayor de 18
-    </span>
-    <span *ngIf="edad <=18">
-      Es Menor de 18
-    </span>
-    <br>
-    <span [ngStyle]="{background:edad>=18? 'red': 'blue'}">
-     condicion binding inline {{edad >= 18 ? "Es mayor de edad" : "Es menor de edad"}} con style en linea
-    </span>
-    <br>
-    <span [ngClass]= "{'cls-mayor': edad>18, 'cls-menor': edad<=18}">
-      condicion binding inline {{edad >= 18 ? "Es mayor de edad" : "Es menor de edad"}} con clases 
-     </span>
-  </div> -->
-
-
-  
+   
   <br>
-  <editor [nombre]="nombreUsuarioSeleccionado"
-          (salidaCambionombre)="cambioNombreUsuario($event)" *ngIf="showform"></editor>
+<!--   <editor [nombre]="nombreUsuarioSeleccionado"
+          (salidaCambionombre)="cambioNombreUsuario($event)" *ngIf="showform"></editor> -->
 
   <div class="cls-bonera-child">
       <input type="text" placeholder="" [(ngModel)]="value">
-      <button (focus)="cambiarTitulo()" (blur)="devolvertitulo()" (click)="filtrar()" mat-raised-button color="primary">Filtrar</button>
+      <button  (click)="filtrar()" mat-raised-button color="primary">Filtrar</button>
   </div>
-  <button (click)="changeShowForm();showBoton('guardar');openDialogAdd()">Agregar</button>        
+  <button (click)="openDialogAdd()">Agregar</button>        
 
-  <!-- <div style="display: inline-flex; gap: 10px; margin-bottom: 10 px; flex-wrap:wrap" [formGroup]="formUser" *ngIf="showform" >
-    <div >
-      <label for="Nombre">Nombre</label>
-      <input type="text" name="Nombre" id="Nombre" formControlName="Nombre">
-    </div>
-    <div>
-      <label for="Apellidos" >Apellidos</label>
-      <input type="text" name="Apellidos" id="Apellidos" formControlName="Apellidos">
-    </div>
-    <div>
-      <label for="Telefono">Numero de Telefono</label>
-      <input type="number" name="Telefono" id="Telefono" formControlName="NumeroTelefono">
-    </div>
-    <div>
-      <label for="Fecha">Fecha de Nacimienot</label>
-      <input type="date" name="Fecha" id="Fecha" formControlName="FechaNacimiento">
-    </div>
-    <div>
-      <label for="Ciudad">Ciudad de Residencia</label>
-      <input type="text" name="Fecha" id="FeCiudadcha" formControlName="CiudadResidencia">
-    </div>
-    <div>
-      <label for="Correo">Correo</label>
-      <input type="email" name="Correo" id="" formControlName="Correo">
-    </div>
-    <div>
-      <label for="Clave">Contraseña</label>
-      <input type="password" name="Clave" id="Clave" formControlName="Clave">
-    </div> 
-    <div>
-      <button (click)="saveUser()" *ngIf="Boton=='guardar'" >Guardar</button>
-    </div>
-    <div>
-      <button (click)="updatePropietario()" *ngIf="Boton=='editar'">Editar</button>
-    </div>
-  </div> -->
-
-   <!--  <div class="cls-botonera">
-
-      <div>
-      <mat-form-field class="example-form-field" appearance="outline">
-        <mat-label>Buscar</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-      </div>
-
-      <div class="cls-bonera-child">        
-      <input type="text" placeholder="Edad" [(ngModel)] = "edad">        
-      <button (focus)="cambiarTitulo()" (blur)="devolvertitulo()" mat-raised-button color="primary">Evento</button>
-      </div>
-
-    </div> -->
     <div>
 
 
@@ -111,7 +31,7 @@
         <!-- Name Column -->
         <ng-container matColumnDef="Apellidos">
           <th mat-header-cell *matHeaderCellDef> Apellidos </th>
-          <td mat-cell *matCellDef="let element" (click)="seleccionarNombre(element.Apellidos)"> {{element.Apellidos}} </td>
+          <td mat-cell *matCellDef="let element" > {{element.Apellidos}} </td>
         </ng-container>
       
         <!-- Weight Column --> 
@@ -136,7 +56,7 @@
           <td mat-cell *matCellDef="let element"> 
             <div style="display:flex; gap: 10px">
             <a (click)="deletePropietario(element.id)">Eliminar</a>
-            <a (click)="selectUser(element); showBoton('editar'); openDialogEdit(element)">Editar</a>
+            <a (click)="selectUser(element); openDialogEdit(element)">Editar</a>
             <a href="">Detalle</a>
             </div>
           </td> 
@@ -149,10 +69,7 @@
     </div>
   </div>
   <br>
-    
-  <button routerLink="/vehiculo">vehiculo</button>
-  <button routerLink="/mecanico">mecanico</button> 
-  
+
   
   
   

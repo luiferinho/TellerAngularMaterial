@@ -29,7 +29,7 @@ export class UsuariosComponent implements OnInit {
 
   displayedColumns: string[] = ['Nombre', 'Apellidos', 'NumeroTelefono', 'FechaNacimiento','Correo', 'Acciones'];
   dataSource : any = [];
-  showform = false;
+  //showform = false;
   Boton = 'guardar';
 
   formUser : FormGroup = new FormGroup({});
@@ -56,27 +56,22 @@ export class UsuariosComponent implements OnInit {
     this.getUser();
   }
 
-  seleccionarNombre(nombreNuevo : string) : void{
+  /*seleccionarNombre(nombreNuevo : string) : void{
     this.nombreUsuarioSeleccionado= nombreNuevo;
     console.log(this.nombreUsuarioSeleccionado);   
 
-  }
+  }*/
+  
 
-  cambiarTitulo():void{
-    this.titulo='Usuarios del Taller';
-  }
-  devolvertitulo():void{
-    this.titulo='Usuarios';
-  }
-
-  cambioNombreUsuario(nombre: string): void {
+  /*cambioNombreUsuario(nombre: string): void {
     for (const key in this.dataSource) {
      if(this.dataSource[key].name== this.nombreUsuarioSeleccionado){
       this.dataSource[key].name= nombre;
       return;
      }         
       }
-    }
+    }*/
+
    getUser(): void{
     this.servicioBackend.getData('propietarios').subscribe(
       (data) =>{
@@ -121,18 +116,17 @@ export class UsuariosComponent implements OnInit {
 
    }
 
-   showBoton(boton : string):void{
+   /*showBoton(boton : string):void{
     this.Boton= boton;
-   }  
+   }  */
    
 
-   changeShowForm(): void{
-      this.showform = !this.showform;
-
-   }
+  // changeShowForm(): void{
+  //    this.showform = !this.showform;
+   //}
 
    selectUser(user: any): void{
-    this.showform = true;
+    //this.showform = true;
     this.formUser.patchValue(user);
    }
 
@@ -180,26 +174,22 @@ export class UsuariosComponent implements OnInit {
    }
 
 
-
-   updatePropietario():void{ 
-      
- }
-
  openDialogAdd(user?: string) {
   const dialogRef=   this.dialog.open(DialogPropietariosComponent,{
-    //width: '330px',
-    //height: '400px',
     data: {
       user: null,
       Boton :'editar'
     }
   });
+  dialogRef.afterClosed().subscribe((data=>{
+    if(data){
+      this.getUser();
+    }
+  }));
 }
 
 openDialogEdit(user?: string) {
   const dialogRef=   this.dialog.open(DialogPropietariosComponent,{
-    //width: '330px',
-    //height: '400px',
     data: {
       user: user,
       Boton :'editar' 
