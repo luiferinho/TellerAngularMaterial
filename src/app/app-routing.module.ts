@@ -7,6 +7,7 @@ import { RevisionesComponent } from './revisiones/revisiones.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { MecanicosComponent } from './mecanicos/mecanicos.component';
 import { VehiculoComponent } from './vehiculo/vehiculo.component';
+import { SolicitudRevisionComponent } from './solicitud-revision/solicitud-revision.component';
 
 
 
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:'mecanicos', component : MecanicosComponent},
   {path:'vehiculos', component : VehiculoComponent},
   {path:'usuarios', component : UsuariosComponent},
-  {path:'revisiones', component : RevisionesComponent}
+  {path:'revisiones', component : RevisionesComponent},
+  {path:'solicitud', component : SolicitudRevisionComponent}
   
 ];
 

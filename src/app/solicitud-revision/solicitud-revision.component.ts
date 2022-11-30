@@ -9,19 +9,21 @@ import {MatDialog} from '@angular/material/dialog';
 import { DialogPropietariosComponent } from '../dialog-propietarios/dialog-propietarios.component';
 import { format } from 'date-fns';
 import { DialogRevisionesComponent } from '../dialog-revisiones/dialog-revisiones.component';
+import { DialogSolicitudRevisionComponent } from '../dialog-solicitud-revision/dialog-solicitud-revision.component';
+import { RevisionesComponent } from '../revisiones/revisiones.component';
+
 
 @Component({
-  selector: 'app-revisiones',
-  templateUrl: './revisiones.component.html',
-  styleUrls: ['./revisiones.component.scss']
+  selector: 'solicitud',
+  templateUrl: './solicitud-revision.component.html',
+  styleUrls: ['./solicitud-revision.component.scss']
 })
-export class RevisionesComponent implements OnInit {
-  titulo = "Revisiones"
+export class SolicitudRevisionComponent implements OnInit {
+  titulo = "Solicitud"
   value = '';
   valueV = '';
-  valueS = '';
 
-  displayedColumns: string[] = ['vehiId','solicitudRevisionId','mecanicoId','nivelaceite','nivelRefrigerante','nivelliquidof','NivelLquidoDireccion','fecha','Observaciones','Acciones'];
+  displayedColumns: string[] = ['IdRevision','mecanicoId','Estado','fecha','idPropietario','Placa','Acciones'];
   dataSource : any = [];
   showform = false;
   Boton = 'guardar';
@@ -38,7 +40,7 @@ export class RevisionesComponent implements OnInit {
 
   filtrar(): void {
 
-    this.servicioBackend.getDataFilter('revisiones',this.value,'mecanicoId').subscribe(
+    this.servicioBackend.getDataFilter('solicitud-revisions',this.value,'mecanicoId').subscribe(
       (data) =>{
         this.dataSource=data;
         console.log(data)
@@ -52,25 +54,9 @@ export class RevisionesComponent implements OnInit {
   
   }
 
-  filtrarV(): void {
+  filtrarP(): void {
 
-    this.servicioBackend.getDataFilter('revisiones',this.valueV,'vehiId').subscribe(
-      (data) =>{
-        this.dataSource=data;
-        console.log(data)
-      },
-      (error) =>{
-        console.log(error);
-        this.dataSource=[];
-        alert(error.message)
-      }
-    )
-  
-  }
-
-  filtrarS(): void {
-
-    this.servicioBackend.getDataFilter('revisiones',this.valueS,'solicitudRevisionId').subscribe(
+    this.servicioBackend.getDataFilter('solicitud-revisions',this.valueV,'Placa').subscribe(
       (data) =>{
         this.dataSource=data;
         console.log(data)
@@ -94,7 +80,7 @@ export class RevisionesComponent implements OnInit {
 
    }
    openDialogAdd(user?: string) {
-    const dialogRef=   this.dialog.open(DialogRevisionesComponent,{
+    const dialogRef=   this.dialog.open(DialogSolicitudRevisionComponent,{
       //width: '330px',
       //height: '400px',
       data: {
@@ -107,7 +93,6 @@ export class RevisionesComponent implements OnInit {
       }
     }));
   }
-  
 
   setFormat(dateString:string):string{
     const date = new Date (dateString);
@@ -121,7 +106,7 @@ export class RevisionesComponent implements OnInit {
    }
 
    getUser(): void{
-    this.servicioBackend.getData('revisiones').subscribe(
+    this.servicioBackend.getData('solicitud-revisions').subscribe(
       (data) =>{
         this.dataSource=data;
         console.log(data)
@@ -135,6 +120,22 @@ export class RevisionesComponent implements OnInit {
    }
 
    openDialogEdit(user?: string) {
+    const dialogRef=   this.dialog.open(DialogSolicitudRevisionComponent,{
+      //width: '330px',
+      //height: '400px',
+      data: {
+        user: user,
+        Boton :'editar' 
+      }
+    });
+    dialogRef.afterClosed().subscribe((data=>{
+      if(data){
+        this.getUser();
+      }
+    }));
+  }
+
+  openDialogEdit2(user?: string) {
     const dialogRef=   this.dialog.open(DialogRevisionesComponent,{
       //width: '330px',
       //height: '400px',

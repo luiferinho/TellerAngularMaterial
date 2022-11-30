@@ -40,6 +40,17 @@ export class DialogVehiculoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(): void{
+    if(this.data && this.data.user){
+      const user = JSON.parse(JSON.stringify(this.data.user));
+      //user['FechaNacimiento']= user['FechaNacimiento'].split('T')[0];
+      this.formUser.patchValue(user);
+      console.log(user);
+      this.Boton= this.data.Boton;
+
+    }
+  }
+
 
 
 

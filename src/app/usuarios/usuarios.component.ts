@@ -22,12 +22,12 @@ export class UsuariosComponent implements OnInit {
 
   nombreUsuarioSeleccionado='j';
   
-  titulo = "Usuarios"
+  titulo = "Propietarios"
   value = '';
   title = 'TallerAngularMAterial';
   edad = 0;
 
-  displayedColumns: string[] = ['Nombre', 'Apellidos', 'NumeroTelefono', 'FechaNacimiento','Correo', 'Acciones'];
+  displayedColumns: string[] = ['Nombre', 'Apellidos', 'Cedula','NumeroTelefono', 'FechaNacimiento','Correo', 'Acciones'];
   dataSource : any = [];
   //showform = false;
   Boton = 'guardar';
@@ -201,6 +201,8 @@ openDialogEdit(user?: string) {
     }
   }));
 }
+
+
 
 setFormat(dateString:string):string{
   const date = new Date (dateString);

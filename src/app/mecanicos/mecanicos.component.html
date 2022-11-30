@@ -35,8 +35,8 @@
         <input type="text" placeholder="" [(ngModel)]="value">
         <button (focus)="cambiarTitulo()" (blur)="devolvertitulo()" (click)="filtrar()" mat-raised-button color="primary">Filtrar</button>
     </div>
-    <button (click)="changeShowForm();showBoton('guardar');openDialogAdd()">Agregar</button>        
-  
+    <button  mat-button color="primary"   (click)="changeShowForm();showBoton('guardar');openDialogAdd()">Agregar</button>        
+    <br><br>
     <!-- <div style="display: inline-flex; gap: 10px; margin-bottom: 10 px; flex-wrap:wrap" [formGroup]="formUser" *ngIf="showform" >
       <div >
         <label for="Nombre">Nombre</label>

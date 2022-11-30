@@ -1,34 +1,45 @@
 <div class="cls-form" [formGroup]="formUser" >
     <div>
-        <h1>{{Boton == 'guardar' ?  'Nueva Revision':'Editar Revision'}}</h1>
+        <h1>{{Boton == 'guardar' ?  'Nueva Solicitud':'Editar Solicitud'}}</h1>
          <hr> <br> <br>
     </div>
     <div class="cls-field">
-        <!-- <mat-form-field class="cls-field" appearance="outline">
+        <mat-form-field  class="cls-field" appearance="outline" *ngIf="cant < 1">
             <mat-label>Solicitud Revision</mat-label>
-            <input  matInput formControlName="solicitudRevisionId">
-          </mat-form-field> -->
+            <input  [value]=" cant " matInput formControlName="IdRevision">
+          </mat-form-field>
+
           <mat-form-field appearance="fill">
-            <mat-label>Solicitud Revision</mat-label>
-            <mat-select matInput formControlName="solicitudRevisionId">
-              <mat-option  *ngFor="let user of dataSourceR" [value]="user.IdRevision">{{user.IdRevision}}</mat-option>              
+            <mat-label>Propietario</mat-label>
+            <mat-select matInput formControlName="idPropietario">
+              <mat-option  *ngFor="let user of dataSourceP" [value]="user.Cedula">{{user.Nombre}} {{user.Apellidos}}</mat-option>              
             </mat-select>
           </mat-form-field> 
 
-          
-    </div>
-    <div class="cls-field">
-        <mat-form-field appearance="outline">
-            <mat-label>Observaciones</mat-label>
-            <input  matInput formControlName="Observaciones">
+          <mat-form-field appearance="outline">
+            <mat-label>Fecha</mat-label>
+            <input  type="date" matInput formControlName="fecha">
           </mat-form-field>
+
+    </div>
+     <div class="cls-field">
       
-     <!--  <mat-form-field class="cls-field" appearance="outline">
-        <mat-label>Id Revision</mat-label>
-        <input type="number" matInput formControlName="idrevision">
+      <!-- <mat-form-field class="cls-field" appearance="outline">
+        <mat-label>Estado</mat-label>
+        <input matInput formControlName="Estado">
       </mat-form-field> -->
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="fill">
+        <mat-label>Estado</mat-label>
+        <mat-select matInput formControlName="Estado">
+          <mat-option   value="Pendiente">Pendiente</mat-option>
+          <mat-option   value="Aprobado">Aprobado</mat-option>
+          <mat-option   value="Rechazado">Rechazado</mat-option>
+          
+        </mat-select>
+      </mat-form-field> 
+
+     <!--  <mat-form-field appearance="outline">
         <mat-label>Nivel Aceite</mat-label>
         <input type="number" matInput formControlName="nivelaceite">
       </mat-form-field>
@@ -59,13 +70,9 @@
         <mat-label>Fecha</mat-label>
         <input  type="date" matInput formControlName="fecha">
       </mat-form-field>
-    </div>    
-    <div  class="cls-field">
+    </div>     -->
 
-     <!--  <mat-form-field appearance="outline">
-        <mat-label>Cedula</mat-label>
-        <input type="number" matInput formControlName="vehiId">
-      </mat-form-field> -->
+    <div class="cls-field">   
       
       <mat-form-field appearance="fill">
         <mat-label>Mecanico</mat-label>
@@ -77,12 +84,13 @@
       
       <mat-form-field appearance="fill">
         <mat-label>Vehiculo</mat-label>
-        <mat-select matInput formControlName="vehiId">
+        <mat-select matInput formControlName="Placa">
           <mat-option  *ngFor="let user of dataSourceV" [value]="user.Placa">{{user.Placa}}</mat-option>
           
         </mat-select>
       </mat-form-field> 
 
+    </div> 
     </div> 
     <div class="cls-button">
       <button mat-raised-button (click)="saveUser()" *ngIf="Boton=='guardar'" >Guardar</button>
@@ -90,5 +98,5 @@
     </div>
     <div>
       <button mat-raised-button (click)="updatePropietario()" *ngIf="Boton=='editar'">Editar</button>
-    </div>
-  </div> 
+    </div> 
+ 
